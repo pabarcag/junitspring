@@ -128,7 +128,6 @@ public class EmpleadosServiceTest {
 
 
     // obtener empelado por id
-
     @Test
     @DisplayName("Tes de traer empleado por id")
     public void testGetEmpleadoById(){
@@ -154,6 +153,24 @@ public class EmpleadosServiceTest {
     }
 
 
+
+    // eliminar metodo
+
+    @Test
+    @DisplayName("Test para probar la eliminacion")
+    public void testParaEliminarEmpleado(){
+        // given
+
+        Long id = 1L;
+
+        BDDMockito.willDoNothing().given(empleadoRepositorio).deleteById(id);
+        // when
+        empleadoService.deleteEmpleado(id);
+
+
+        //then
+        Mockito.verify(empleadoRepositorio, Mockito.times(1)).deleteById(id);
+    }
 
 
 
